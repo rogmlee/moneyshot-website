@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moneyshot — Live Band, Sunshine Coast</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #f0f0f0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-weight: 300;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem 2rem;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background: url('hero.jpg') center 20% / cover no-repeat;
+            filter: grayscale(100%) contrast(1.1) brightness(0.9);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 10, 10, 0.1) 0%,
+                rgba(10, 10, 10, 0.3) 40%,
+                rgba(10, 10, 10, 0.85) 75%,
+                rgba(10, 10, 10, 1) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        /* Pretext-inspired: adaptive title that fills available width */
+        .hero-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            font-style: italic;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background: #f0f0f0;
+            color: #0a0a0a;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonials-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0.4;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .testimonial {
+            margin-bottom: 4rem;
+            max-width: 600px;
+        }
+
+        .testimonial:nth-child(even) {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .testimonial blockquote {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .testimonial cite {
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            opacity: 0.45;
+            display: block;
+        }
+
+        .stars {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── CONTACT ── */
+        .contact {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .contact a.email {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .contact a.email:hover {
+            background: #f0f0f0;
+            color: #0a0a0a;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .about {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" id="hero-title">Moneyshot</h1>
+            <p class="hero-tagline" id="hero-tagline">Still Shootin'</p>
+            <a href="#contact" class="hero-cta">Book Us</a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonials-heading">What people say</div>
+
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"They played my 60th and my husband forgot it was his party. Found him in the front row doing air guitar to Jumping Jack Flash. He's 62. He pulled a hamstring."</blockquote>
+            <cite>Sharon S. &mdash; 60th Birthday, Noosa</cite>
+        </div>
+
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <blockquote>"We booked them for the hospital Christmas party. Five nurses called in sick the next day. Three people died."</blockquote>
+            <cite>Noosa Hospital Social Committee</cite>
+        </div>
+
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"The singer told me he used to work in investment banking. I said that explains why he performs like a man with nothing left to lose."</blockquote>
+            <cite>Anonymous audience member &mdash; Verrierdale Hall</cite>
+        </div>
+
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div>
+            <blockquote>"My wife asked me to book a jazz quartet for her 50th. I booked Moneyshot instead. We're still married, but it was touch and go for about a week."</blockquote>
+            <cite>Name withheld &mdash; Private event, Coolum</cite>
+        </div>
+
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 id="contact-title">Get in touch</h2>
+        <p>Birthdays, fundraisers, socials, or anywhere that needs a band. We'll bring the noise.</p>
+        <a href="mailto:rogmlee@gmail.com" class="email">Email Us</a>
+    </section>
+
+    <footer>
+        Moneyshot &mdash; Sunshine Coast, QLD
+    </footer>
+
+    <script type="module">
+        // ── ADAPTIVE HEADLINE SIZING ──
+        // Inspired by pretext's binary search approach:
+        // Find the largest font size where the title fits on one line
+        // without breaking. Pure measurement, no DOM reflow during resize.
+
+        function fitTextToWidth(element, maxWidth, minSize = 24, maxSize = 200) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const style = getComputedStyle(element);
+            const fontFamily = style.fontFamily;
+            const fontWeight = style.fontWeight;
+            const text = element.textContent;
+
+            let lo = minSize;
+            let hi = maxSize;
+
+            // Binary search for optimal font size (pretext pattern)
+            while (hi - lo > 1) {
+                const mid = Math.floor((lo + hi) / 2);
+                ctx.font = `${fontWeight} ${mid}px ${fontFamily}`;
+                const measured = ctx.measureText(text).width;
+                if (measured <= maxWidth) {
+                    lo = mid;
+                } else {
+                    hi = mid;
+                }
+            }
+
+            element.style.fontSize = `${lo}px`;
+        }
+
+        // Fit the hero title and tagline
+        function fitHero() {
+            const container = document.querySelector('.hero-content');
+            const maxWidth = container.offsetWidth;
+
+            const title = document.getElementById('hero-title');
+            fitTextToWidth(title, maxWidth, 40, 220);
+
+            const tagline = document.getElementById('hero-tagline');
+            const titleSize = parseFloat(title.style.fontSize);
+            tagline.style.fontSize = `${Math.max(titleSize * 0.22, 16)}px`;
+        }
+
+        // Fit the contact section heading
+        function fitContact() {
+            const section = document.querySelector('.contact');
+            const maxWidth = section.offsetWidth * 0.8;
+            const heading = document.getElementById('contact-title');
+            fitTextToWidth(heading, maxWidth, 24, 120);
+        }
+
+        // ── INIT ──
+        await document.fonts.ready;
+        fitHero();
+        fitContact();
+
+        // Refit on resize (debounced)
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                fitHero();
+                fitContact();
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
