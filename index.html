@@ -352,7 +352,7 @@
 
             const title = document.getElementById('hero-title');
             const isMobile = window.innerWidth <= 600;
-            fitTextToWidth(title, maxWidth * (isMobile ? 0.88 : 1), 36, 220);
+            fitTextToWidth(title, maxWidth - (isMobile ? 30 : 0), 36, 220);
 
             const tagline = document.getElementById('hero-tagline');
             const titleSize = parseFloat(title.style.fontSize);
