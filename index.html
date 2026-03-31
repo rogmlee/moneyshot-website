@@ -215,7 +215,46 @@
         /* ── MOBILE ── */
         @media (max-width: 600px) {
             .hero {
-                padding: 2rem 1.5rem;
+                padding: 2rem 1.2rem;
+                min-height: 100svh;
+            }
+            .hero-image {
+                background-position: center 15%;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-tagline {
+                margin-bottom: 1.5rem;
+            }
+            .hero-cta {
+                padding: 1rem 2.5rem;
+                font-size: 0.9rem;
+                border-width: 2px;
+            }
+            .testimonials {
+                padding: 3rem 1.5rem;
+                min-height: auto;
+            }
+            .testimonial {
+                max-width: 100%;
+                margin-bottom: 3rem;
+            }
+            .testimonial:nth-child(even) {
+                margin-left: 0;
+                text-align: left;
+            }
+            .testimonial blockquote {
+                font-size: 1.1rem;
+            }
+            .contact {
+                min-height: auto;
+                padding: 4rem 1.5rem;
+            }
+            .contact a.email {
+                padding: 1rem 2.5rem;
+                font-size: 0.9rem;
+                border-width: 2px;
             }
             .about {
                 padding: 4rem 1.5rem;
@@ -312,7 +351,8 @@
             const maxWidth = container.offsetWidth;
 
             const title = document.getElementById('hero-title');
-            fitTextToWidth(title, maxWidth, 40, 220);
+            const isMobile = window.innerWidth <= 600;
+            fitTextToWidth(title, maxWidth * (isMobile ? 0.95 : 1), 36, 220);
 
             const tagline = document.getElementById('hero-tagline');
             const titleSize = parseFloat(title.style.fontSize);
