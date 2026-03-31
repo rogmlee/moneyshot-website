@@ -223,6 +223,11 @@
             }
             .hero-content {
                 max-width: 100%;
+                padding-right: 0.5rem;
+            }
+            .hero-title {
+                word-break: break-all;
+                white-space: normal;
             }
             .hero-tagline {
                 margin-bottom: 1.5rem;
@@ -352,7 +357,8 @@
 
             const title = document.getElementById('hero-title');
             const isMobile = window.innerWidth <= 600;
-            fitTextToWidth(title, maxWidth - (isMobile ? 30 : 0), 36, 220);
+            const padding = isMobile ? 50 : 0;
+            fitTextToWidth(title, maxWidth - padding, 36, 220);
 
             const tagline = document.getElementById('hero-tagline');
             const titleSize = parseFloat(title.style.fontSize);
